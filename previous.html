@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",initial-scale="1">
+    <title>태산팩VRP2</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/태산팩VRP.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+        <style>
+            /*datepicker에서 사용한 이미지 버튼 style적용*/
+            img.ui-datepicker-trigger {
+                margin-left:5px; vertical-align:middle; cursor:pointer;
+}
+        </style>
+        <script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+        <!-- datepicker 한국어로 -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/i18n/datepicker-ko.js"></script>
+        <script>
+            $(function() {
+                
+            
+                //오늘 날짜를 출력
+                $("#today").text(new Date().toLocaleDateString());
+
+                //datepicker 한국어로 사용하기 위한 언어설정
+                $.datepicker.setDefaults($.datepicker.regional['ko']); 
+                
+                // 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
+                // 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
+
+                //시작일.
+                $('#fromDate').datepicker({
+                    showOn: "both",                     // 달력을 표시할 타이밍 (both: focus or button)
+                    buttonImage: "images/calendar.gif", // 버튼 이미지
+                    buttonImageOnly : true,             // 버튼 이미지만 표시할지 여부
+                    buttonText: "날짜선택",             // 버튼의 대체 텍스트
+                    dateFormat: "yy-mm-dd",             // 날짜의 형식
+                    changeMonth: true,                  // 월을 이동하기 위한 선택상자 표시여부
+                    //minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+                    onClose: function( selectedDate ) {    
+                        // 시작일(fromDate) datepicker가 닫힐때
+                        // 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+                        $("#toDate").datepicker( "option", "minDate", selectedDate );
+                    }                
+                });
+
+                //종료일
+                $('#toDate').datepicker({
+                    showOn: "both", 
+                    buttonImage: "images/calendar.gif", 
+                    buttonImageOnly : true,
+                    buttonText: "날짜선택",
+                    dateFormat: "yy-mm-dd",
+                    changeMonth: true,
+                    //minDate: 0, // 오늘 이전 날짜 선택 불가
+                    onClose: function( selectedDate ) {
+                        // 종료일(toDate) datepicker가 닫힐때
+                        // 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+                        $("#fromDate").datepicker( "option", "maxDate", selectedDate );
+                    }                
+                });
+            });
+        </script>
+
+
+
+
+    
+
+  </head>
+  <body>
+    <style type="text/css">
+      .card-header {
+        /*출처:로젠택배 홈페이지
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 100%;
+        width: 98%;
+        position: fixed;
+        */
+        background-size: cover;
+        background-color:#F8B159;
+        color:white;
+        
+                
+      }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        
+        <a class="navbar-brand" href="index2.html">태산팩VRP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="nav navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://tspack.co.kr/" target="_blank">태산팩 홈페이지<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="classification.php">배송분류하기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="previous.html">이전배송분류</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="route.php">경로확인</a>
+            </li>
+          </ul>
+        </div>
+      </div>    
+    </nav>
+
+    <div class="container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <div class="row">
+                  <div class="col-md-6">
+                  <h4 class="card-title ">날짜선택</h4>
+                  <form>
+                    <label for="fromDate">시작일</label>
+                    <input type="text" name="fromDate" id="fromDate">
+                    ~
+                    <label for="toDate">종료일</label>
+                    <input type="text" name="toDate" id="toDate">
+                  </form>
+         
+          
+          
+                  </div>
+                  <div class="col-md-6">
+                    <button class="btn btn-primary pull-right" href="classification2.html">로젠</button>
+                    <button class="btn btn-primary pull-right" href="classification2.html">자차</button>
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                    <th>
+                        Date
+                      </th>
+                      <th>
+                        Customer
+                      </th>
+                      <th>
+                        Address
+                      </th>
+                      <th>
+                        Items
+                      </th>
+                      <th>
+                        Amount
+                      </th>
+                      <th>
+                        Box
+                      </th>
+                      <th>
+                        Cost(won)
+                      </th>
+                    </thead>
+                    
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+
+    
+   
+    
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
