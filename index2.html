@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",initial-scale="1">
+    <title>태산팩VRP2</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/태산팩VRP.css">
+  </head>
+  <body>
+    <style type="text/css">
+      .jumbotron {
+        background-image: url('images/컨테이너사진.jpg');
+        /*출처:로젠택배 홈페이지
+        margin-left: 0px;
+        margin-right: 0px;
+        height: 100%;
+        width: 98%;
+        position: fixed;
+        */
+        background-size: cover;
+        color:white;
+        
+                
+      }
+    </style>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        
+        <a class="navbar-brand" href="index2.html">태산팩VRP</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="nav navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="http://tspack.co.kr/" target="_blank">태산팩 홈페이지<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="classification.php">주문내역보기</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="previous.php">이전배송분류</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="routeexmple.php">경로확인</a>
+            </li>
+		  </ul>
+		  <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">접속하기<span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <li><a class="dropdown-item" href="index.html">로그아웃</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+      </div>    
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="text-center">태산팩 VRP를 소개합니다.</h1>
+        <p class="text-center">태산팩의 자차와 로젠택배 이용을 분석하여 비용과 루트를 최적화 시키는 사이트입니다.</p>
+        <p class="text-center"><a class="btn btn-primary btn-lg" href="#" role="button">사이트 가기</a></p>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+            <h4>배송분류하기</h4>
+            <p>주문내역을 불러와 배송 분류를 합니다.</p>
+            <p><a class="btn btn-outline-secondary" href="order.html">자세히 알아보기</a></p>
+        </div>
+        <div class="col-md-4">
+            <h4>이전배송분류</h4>
+            <p>과거 주문내역의 배송 분류 결과를 볼 수 있습니다.</p>
+            <p><a class="btn btn-outline-secondary"  href="classification.html">자세히 알아보기</a></p>
+        </div>
+        <div class="col-md-4">
+            <h4>경로확인</h4>
+            <p>직접배송 경로를 확인할 수 있습니다.</p>
+            <p><a class="btn btn-outline-secondary"  href="order.html">자세히 알아보기</a></p>
+        </div>
+      </div>
+    </div>
+    <footer style="background-color:#F8B159;">
+      <div class="container">
+        <br>
+        <div class="row">
+          <div class="col-sm-12" style ="text-align:center;"><h5>Copyright &copy; 2020</h5><h5>한국외국어대학교 산업경영공학과</h5><h5>장동혁.송윤범.전종미.박지연</h5></div>
+        </div>
+      </div>
+    </footer>
+    <div class="row">
+      <div class="modal" id="modal" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              태산팩VRP의 특징
+              <button class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align:center;">
+              저희 서비스의 특징은 주문내역을 불러와<br>
+              즉시 배달 경로 루트를 최적화 할 수 있다는 점입니다.<br><br>
+              <img src="images/vrp.png" id="imagepreview" style="width:356px; height:256px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+  </body>
+</html>
