@@ -1,0 +1,12 @@
+@import url(http://fonts.goolgeapis.com/earlyaccess/nanumgothic.css);
+
+a {
+	color:#000000;
+	text-decoration: none;
+}
+a:hover {
+	color:#bbbbbb;
+	text-decoration: none;
+	cursor:pointer;
+}
+/* 내비게이션 영역*/
